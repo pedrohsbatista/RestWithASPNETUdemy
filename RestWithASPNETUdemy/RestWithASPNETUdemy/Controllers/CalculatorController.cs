@@ -76,9 +76,9 @@ public class CalculatorController : ControllerBase
                     numbersOutput[i] = ConvertToDecimal(number);
                 else
                     throw new Exception();
-            }           
-
-            var avg = Queryable.Average(numbersOutput.AsQueryable());
+            }
+                        
+            var avg = numbersOutput.Average();
             return Ok(avg.ToString());
         }
         catch (Exception)
@@ -112,7 +112,7 @@ public class CalculatorController : ControllerBase
 
         return 0;
     }
-
+    
     private double ConvertToDouble(string strNumber)
     {
         if (double.TryParse(strNumber, out var number))
